@@ -1,4 +1,4 @@
-# Geospatial-Data-Science
+# Geospatial Data Science
 An overview of methods and tips for performing analysis, applying machine learning, and visualizing geospatial data
 Geospatial data analysis is a vast and interesting domain that allows for locational based anaylsis.  There are many facets of what you can do, however this will focus more on how to quickly bootstrap and implement some forms of analysis and visualization.
 
