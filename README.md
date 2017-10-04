@@ -16,7 +16,7 @@ There are many modules and libraries available for these uses, this one uses a f
     requests (for scraping)
     
     
-PART ONE: GETTING COORDINATES
+##PART ONE: GETTING COORDINATES
 **A simple method for translating data so that it can be ported to a map**
 
 A fundamental aspect of geospatial data is a *geometry* , if you are at all familiar with GIS data this will not be something new to you, the geometry of an object is a way that information about its physical features can be stored easily in a table.  For simplicities sake there are only a few to be aware of, but we will touch on most of them later
