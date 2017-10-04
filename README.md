@@ -38,6 +38,10 @@ The main feature of this file is the function *get_coordinates(address)* .  Usin
 
 Running the script will iterate through your dataframe and then pull the coordinates for each address, two things of note here that will most likely sound familiar.  Pandas *hates* when you try to upload or update values in a dataframe, and we also need to make sure that if we cannot pull the address that it is properly noted.  We use numpy and nan to create a series of the dataframe length, and then iterate over the dataframe, updating values of the series at the correct dataframe index, and then once this is complete, appending the series to the dataframe, this avoids the major headaches that usually come with changing values in dataframes as you iterate over rows. 
 
-*That's it!* we have now translated non geospatial data into discrete point objects that can be represented on a map (in this case we pulled coordinates).  In the next section we will see how to visualize these items on a map.
+    0 name1   1600 Pennsylvania Ave, Baltimore, MD 21217   {'lat': 39.3030243, 'lng': -76.6342229}   
+    1  name2  1600 Pennsylvania Ave NW, Washington, DC 20500  {'lat': 38.8976633, 'lng': -77.0365739}
+
+
+*That's it!* we have now translated non geospatial data into discrete point objects that can be represented on a map.  In the next section we will see how to visualize these items on a map.
 
 
