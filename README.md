@@ -16,7 +16,7 @@ There are many modules and libraries available for these uses, this one uses a f
     requests (for scraping)
     
     
-## PART ONE: GETTING COORDINATES##
+PART ONE: GETTING COORDINATES
 **A simple method for translating data so that it can be ported to a map**
 
 A fundamental aspect of geospatial data is a *geometry* , if you are at all familiar with GIS data this will not be something new to you, the geometry of an object is a way that information about its physical features can be stored easily in a table.  For simplicities sake there are only a few to be aware of, but we will touch on most of them later
@@ -31,13 +31,13 @@ Say you have a list of locations (representing something such as stores, crime s
     Get_coordinates.py
 Has the key features and functions that we will need here. Make sure you have requests installed, and also a very useful parsing tool called [usaddress](https://github.com/datamade/usaddress).  Please note as of now this is only for US based locations.
 
-###Running the code###
+Running the code
 In order to run the code you need to input some sort of data file with addresses.  Load a file in as a dataframe or even create a test one that includes at least addresses.  
 
 The main feature of this file is the function *get_coordinates(address)* .  Using the Usaddress module, we can take addresses that are imperfect or not even fully correct and it will usually parse out key components of the address into an ordered dict. The output also so happens to directly align with google maps geocoder, which we can access without the need for an API key by generating the URL for the address, and using requests to pull in the coordinate point.  
 
 Running the script will iterate through your dataframe and then pull the coordinates for each address, two things of note here that will most likely sound familiar.  Pandas *hates* when you try to upload or update values in a dataframe, and we also need to make sure that if we cannot pull the address that it is properly noted.  We use numpy and nan to create a series of the dataframe length, and then iterate over the dataframe, updating values of the series at the correct dataframe index, and then once this is complete, appending the series to the dataframe, this avoids the major headaches that usually come with changing values in dataframes as you iterate over rows. 
 
-###That's it!### we have now translated non geospatial data into discrete point objects that can be represented on a map (in this case we pulled coordinates).  In the next section we will see how to visualize these items on a map.
+That's it! we have now translated non geospatial data into discrete point objects that can be represented on a map (in this case we pulled coordinates).  In the next section we will see how to visualize these items on a map.
 
 
