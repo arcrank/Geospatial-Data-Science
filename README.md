@@ -28,6 +28,8 @@ A fundamental aspect of geospatial data is a *geometry* , if you are at all fami
 
 Say you have a list of locations (representing something such as stores, crime spots, or bike racks),  we will be able to generate coordinates for them by webscraping google maps json API to pull coordinates.
 
+
+
     Get_coordinates.py
 Has the key features and functions that we will need here. Make sure you have requests installed, and also a very useful parsing tool called [usaddress](https://github.com/datamade/usaddress).  Please note as of now this is only for US based locations.
 
@@ -41,9 +43,8 @@ To see how the usaddres module works here is a snippet:
     address = '123 Main St. Suite 100 Chicago, IL
     usaddress.parse(address)
     [('123', 'AddressNumber'), ('Main', 'StreetName'), ('St.', 'StreetNamePostType'), ('Suite', 'OccupancyType'), ('100', 'OccupancyIdentifier'), ('Chicago,', 'PlaceName'), ('IL', 'StateName')]
+   
     
-    
-
 Running the script will iterate through your dataframe and then pull the coordinates for each address, two things of note here that will most likely sound familiar.  Pandas *hates* when you try to upload or update values in a dataframe, and we also need to make sure that if we cannot pull the address that it is properly noted.  We use numpy and nan to create a series of the dataframe length, and then iterate over the dataframe, updating values of the series at the correct dataframe index, and then once this is complete, appending the series to the dataframe, this avoids the major headaches that usually come with changing values in dataframes as you iterate over rows. 
 
     0 name1   1600 Pennsylvania Ave, Baltimore, MD 21217   {'lat': 39.3030243, 'lng': -76.6342229}   
@@ -52,4 +53,20 @@ Running the script will iterate through your dataframe and then pull the coordin
 
 *That's it!* we have now translated non geospatial data into discrete point objects that can be represented on a map.  In the next section we will see how to visualize these items on a map.
 
+## PART TWO: GENERATING A MAP
+**Using Folium to generate a map with some of our data**
+
+Make sure you have the Folium module installed. Now that we have a dataframe with some objects and geospatial data, we can generate a map displaying these.  Folium makes it incredibly easy to generate HTML based maps, all we really have to do is iterate through our dataframe, add the latitudes and longitudes, and in this case we will even add a viewable tag. 
+
+the function *Map Creator* takes in a dataframe and outputs a map.  You can see how it unpacks the coordinates, which are basically stored as a dictionary, and then creates a folium marker.
+        
+        for index,row in df.iterrows():
+        coords = dict(row['Coordinates'])
+        lat = coords['lat']
+        lng = coords['lng']
+        popup_text = row['Name']
+      
+It creates the map, which you can then immediately view.
+
+[map](index.html)
 
