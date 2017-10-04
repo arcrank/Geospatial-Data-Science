@@ -24,7 +24,7 @@ A fundamental aspect of geospatial data is a *geometry* , if you are at all fami
 -polygons
 -rasters
 
-### To start, we will show you how to get coordinate representations for a location or address, and store it in a pandas dataframe.### 
+### To start, we will show you how to get coordinate representations for a location or address, and store it in a pandas dataframe. 
 
 Say you have a list of locations (representing something such as stores, crime spots, or bike racks),  we will be able to generate coordinates for them by webscraping google maps json API to pull coordinates.
 
