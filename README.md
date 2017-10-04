@@ -36,6 +36,13 @@ In order to run the code you need to input some sort of data file with addresses
 
 The main feature of this file is the function *get_coordinates(address)* .  Using the Usaddress module, we can take addresses that are imperfect or not even fully correct and it will usually parse out key components of the address into an ordered dict. The output also so happens to directly align with google maps geocoder, which we can access without the need for an API key by generating the URL for the address, and using requests to pull in the coordinate point.  
 
+To see how the usaddres module works here is a snippet:
+    address = '123 Main St. Suite 100 Chicago, IL
+    usaddress.parse(address)
+    [('123', 'AddressNumber'), ('Main', 'StreetName'), ('St.', 'StreetNamePostType'), ('Suite', 'OccupancyType'), ('100', 'OccupancyIdentifier'), ('Chicago,', 'PlaceName'), ('IL', 'StateName')]
+    
+    
+
 Running the script will iterate through your dataframe and then pull the coordinates for each address, two things of note here that will most likely sound familiar.  Pandas *hates* when you try to upload or update values in a dataframe, and we also need to make sure that if we cannot pull the address that it is properly noted.  We use numpy and nan to create a series of the dataframe length, and then iterate over the dataframe, updating values of the series at the correct dataframe index, and then once this is complete, appending the series to the dataframe, this avoids the major headaches that usually come with changing values in dataframes as you iterate over rows. 
 
     0 name1   1600 Pennsylvania Ave, Baltimore, MD 21217   {'lat': 39.3030243, 'lng': -76.6342229}   
