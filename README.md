@@ -70,3 +70,4 @@ It creates the map, which you can then immediately view.
 
 [map](index.html)
 
+Next post will show how we can webscrape data for coordinates, and then how to analyze features on them
